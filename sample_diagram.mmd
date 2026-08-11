@@ -1,0 +1,27 @@
+flowchart TD
+  out_blood_pressure["blood pressure
+what the plan targets"]
+  out_ldl_cholesterol["LDL cholesterol
+what the plan targets"]
+  gap_any_plan_to_check["Any plan to check for lisinopril-induced cough and switch to an ARB if cough limits adherence
+the literature says this matters here"]
+  gap_followup_ldl_meas["Follow-up LDL measurement and treatment intensification if LDL reduction is inadequate (for example adding ezetimibe or other nonstatin therapy)
+the literature says this matters here"]
+  gap_measurement_of_add["Measurement of additional lipid risk markers such as lipoprotein(a), non-HDL cholesterol, triglycerides, or apolipoprotein B
+the literature says this matters here"]
+  gap_earlier_reassessme["Earlier reassessment than six months to evaluate whether blood pressure and LDL are responding adequately to therapy
+the literature says this matters here"]
+  do_lisinopril{{"Lisinopril 20 mg daily"}}
+  do_atorvastatin{{"Atorvastatin 40 mg"}}
+  do_lisinopril ==> out_blood_pressure
+  do_atorvastatin ==> out_ldl_cholesterol
+  gap_any_plan_to_check --> out_blood_pressure
+  gap_followup_ldl_meas --> out_ldl_cholesterol
+  gap_measurement_of_add --> out_ldl_cholesterol
+  gap_earlier_reassessme --> out_blood_pressure
+  classDef outcome fill:#f1f5f9,color:#0f172a,stroke:#94a3b8;
+  classDef act fill:#dbeafe,color:#1e3a8a,stroke:#2563eb;
+  classDef flag fill:#fee2e2,color:#991b1b,stroke:#dc2626,stroke-width:2px;
+  class out_blood_pressure,out_ldl_cholesterol outcome;
+  class do_lisinopril,do_atorvastatin act;
+  class gap_any_plan_to_check,gap_followup_ldl_meas,gap_measurement_of_add,gap_earlier_reassessme flag;

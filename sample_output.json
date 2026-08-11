@@ -1,0 +1,854 @@
+{
+  "contract_version": "causal-graph/2",
+  "builder": "evidence_first",
+  "seconds": 17.4,
+  "graph": {
+    "contract_version": "causal-graph/2",
+    "case_id": "",
+    "title": "",
+    "subtitle": "",
+    "nodes": [
+      {
+        "id": "out_blood_pressure",
+        "label": "blood pressure\nwhat the plan targets",
+        "role": "causal",
+        "kind": "real_outcome",
+        "style_class": "outcome",
+        "in_plan_view": true,
+        "grounding": "the plan impliedly acts on this: \u201clisinopril 20 mg daily for blood pressure\u201d",
+        "ask": "",
+        "finding_rank": null,
+        "flag_card": null,
+        "provenance": "ir",
+        "concept": "blood pressure",
+        "cui": "",
+        "snomed_id": "",
+        "absent_term": "",
+        "triggered_by": ""
+      },
+      {
+        "id": "out_ldl_cholesterol",
+        "label": "LDL cholesterol\nwhat the plan targets",
+        "role": "causal",
+        "kind": "real_outcome",
+        "style_class": "outcome",
+        "in_plan_view": true,
+        "grounding": "the plan impliedly acts on this: \u201catorvastatin 40 mg because my LDL was 165\u201d",
+        "ask": "",
+        "finding_rank": null,
+        "flag_card": null,
+        "provenance": "ir",
+        "concept": "LDL cholesterol",
+        "cui": "",
+        "snomed_id": "",
+        "absent_term": "",
+        "triggered_by": ""
+      },
+      {
+        "id": "gap_any_plan_to_check",
+        "label": "Any plan to check for lisinopril-induced cough and switch to an ARB if cough limits adherence\nthe literature says this matters here",
+        "role": "causal",
+        "kind": "flag",
+        "style_class": "flag",
+        "in_plan_view": false,
+        "grounding": "ACE inhibitors commonly cause cough, and cough-related intolerance can reduce adherence or require changing therapy, affecting blood pressure control.",
+        "ask": "\u201cCan we look at Any plan to check for lisinopril-induced cough and switch to an ARB if cough limits adhere?\u201d",
+        "finding_rank": 0,
+        "flag_card": {
+          "type": "hidden_upstream_driver",
+          "code": "01",
+          "label": "Hidden upstream driver",
+          "pattern": "omission-upstream",
+          "accent": "#1f3be0",
+          "accent_ink": "#1730a8",
+          "chain": [
+            "Lisinopril 20 mg da\u2026",
+            "blood pressure"
+          ],
+          "gap": "Any plan to check f\u2026",
+          "goal": "",
+          "caption": ""
+        },
+        "provenance": "ir",
+        "concept": "",
+        "cui": "",
+        "snomed_id": "",
+        "absent_term": "Any plan to check for lisinopril-induced cough and switch to",
+        "triggered_by": "My doctor started me on lisinopril 20 mg daily"
+      },
+      {
+        "id": "gap_followup_ldl_meas",
+        "label": "Follow-up LDL measurement and treatment intensification if LDL reduction is inadequate (for example adding ezetimibe or other nonstatin therapy)\nthe literature says this matters here",
+        "role": "causal",
+        "kind": "flag",
+        "style_class": "flag",
+        "in_plan_view": false,
+        "grounding": "The literature emphasizes that many patients do not achieve adequate LDL lowering on statins alone and that additional LDL-lowering therapy can produce substantially larger LDL reductions when needed.",
+        "ask": "\u201cCan we look at Follow-up LDL measurement and treatment intensification if LDL reduction is inadequate (fo?\u201d",
+        "finding_rank": 1,
+        "flag_card": {
+          "type": "hidden_upstream_driver",
+          "code": "01",
+          "label": "Hidden upstream driver",
+          "pattern": "omission-upstream",
+          "accent": "#1f3be0",
+          "accent_ink": "#1730a8",
+          "chain": [
+            "Atorvastatin 40 mg",
+            "LDL cholesterol"
+          ],
+          "gap": "Follow-up LDL measu\u2026",
+          "goal": "",
+          "caption": ""
+        },
+        "provenance": "ir",
+        "concept": "",
+        "cui": "",
+        "snomed_id": "",
+        "absent_term": "Follow-up LDL measurement and treatment intensification if L",
+        "triggered_by": "atorvastatin 40 mg because my LDL was 165"
+      },
+      {
+        "id": "gap_measurement_of_add",
+        "label": "Measurement of additional lipid risk markers such as lipoprotein(a), non-HDL cholesterol, triglycerides, or apolipoprotein B\nthe literature says this matters here",
+        "role": "causal",
+        "kind": "flag",
+        "style_class": "flag",
+        "in_plan_view": false,
+        "grounding": "The papers identify residual cardiovascular risk that is not captured by LDL-C alone and describe apoB and lipoprotein(a) as important contributors to risk assessment and treatment decisions.",
+        "ask": "\u201cCan we look at Measurement of additional lipid risk markers such as lipoprotein(a), non-HDL cholesterol, ?\u201d",
+        "finding_rank": 2,
+        "flag_card": {
+          "type": "hidden_upstream_driver",
+          "code": "01",
+          "label": "Hidden upstream driver",
+          "pattern": "omission-upstream",
+          "accent": "#1f3be0",
+          "accent_ink": "#1730a8",
+          "chain": [
+            "Atorvastatin 40 mg",
+            "LDL cholesterol"
+          ],
+          "gap": "Measurement of addi\u2026",
+          "goal": "",
+          "caption": ""
+        },
+        "provenance": "ir",
+        "concept": "",
+        "cui": "",
+        "snomed_id": "",
+        "absent_term": "Measurement of additional lipid risk markers such as lipopro",
+        "triggered_by": "atorvastatin 40 mg because my LDL was 165"
+      },
+      {
+        "id": "gap_earlier_reassessme",
+        "label": "Earlier reassessment than six months to evaluate whether blood pressure and LDL are responding adequately to therapy\nthe literature says this matters here",
+        "role": "causal",
+        "kind": "flag",
+        "style_class": "flag",
+        "in_plan_view": false,
+        "grounding": "The evidence emphasizes that individualized antihypertensive response varies substantially and that prolonged exposure to elevated LDL increases cumulative atherosclerotic burden over time.",
+        "ask": "\u201cCan we look at Earlier reassessment than six months to evaluate whether blood pressure and LDL are respon?\u201d",
+        "finding_rank": 3,
+        "flag_card": {
+          "type": "hidden_upstream_driver",
+          "code": "01",
+          "label": "Hidden upstream driver",
+          "pattern": "omission-upstream",
+          "accent": "#1f3be0",
+          "accent_ink": "#1730a8",
+          "chain": [
+            "Lisinopril 20 mg da\u2026",
+            "blood pressure"
+          ],
+          "gap": "Earlier reassessmen\u2026",
+          "goal": "",
+          "caption": ""
+        },
+        "provenance": "ir",
+        "concept": "",
+        "cui": "",
+        "snomed_id": "",
+        "absent_term": "Earlier reassessment than six months to evaluate whether blo",
+        "triggered_by": "He said to lose weight and come back in six months."
+      },
+      {
+        "id": "do_lisinopril",
+        "label": "Lisinopril 20 mg daily",
+        "role": "intervention",
+        "kind": "unknown",
+        "style_class": "act",
+        "in_plan_view": true,
+        "grounding": "",
+        "ask": "",
+        "finding_rank": null,
+        "flag_card": null,
+        "provenance": "ir",
+        "concept": "",
+        "cui": "",
+        "snomed_id": "",
+        "absent_term": "",
+        "triggered_by": ""
+      },
+      {
+        "id": "do_atorvastatin",
+        "label": "Atorvastatin 40 mg",
+        "role": "intervention",
+        "kind": "unknown",
+        "style_class": "act",
+        "in_plan_view": true,
+        "grounding": "",
+        "ask": "",
+        "finding_rank": null,
+        "flag_card": null,
+        "provenance": "ir",
+        "concept": "",
+        "cui": "",
+        "snomed_id": "",
+        "absent_term": "",
+        "triggered_by": ""
+      }
+    ],
+    "edges": [
+      {
+        "id": "do_lisinopril__out_blood_pressure",
+        "source": "do_lisinopril",
+        "target": "out_blood_pressure",
+        "label": "",
+        "role": "lever",
+        "status": "supported",
+        "path_type": "upstream",
+        "evidence": "hypothesis",
+        "pmids": [],
+        "style": "bold",
+        "provenance": "ir"
+      },
+      {
+        "id": "do_atorvastatin__out_ldl_cholesterol",
+        "source": "do_atorvastatin",
+        "target": "out_ldl_cholesterol",
+        "label": "",
+        "role": "lever",
+        "status": "supported",
+        "path_type": "upstream",
+        "evidence": "hypothesis",
+        "pmids": [],
+        "style": "bold",
+        "provenance": "ir"
+      },
+      {
+        "id": "gap_any_plan_to_check__out_blood_pressure",
+        "source": "gap_any_plan_to_check",
+        "target": "out_blood_pressure",
+        "label": "ACE inhibitors commonly cause cough, and cough-related intolerance can reduce adherence or require changing therapy, affecting blood pressure control.",
+        "role": "causal",
+        "status": "omitted",
+        "path_type": "upstream",
+        "evidence": "observational",
+        "pmids": [
+          "37417783"
+        ],
+        "style": "plain",
+        "provenance": "ir"
+      },
+      {
+        "id": "gap_followup_ldl_meas__out_ldl_cholesterol",
+        "source": "gap_followup_ldl_meas",
+        "target": "out_ldl_cholesterol",
+        "label": "The literature emphasizes that many patients do not achieve adequate LDL lowering on statins alone and that additional LDL-lowering therapy can produce substantially larger LDL red",
+        "role": "causal",
+        "status": "omitted",
+        "path_type": "upstream",
+        "evidence": "observational",
+        "pmids": [
+          "41504909",
+          "33514449"
+        ],
+        "style": "plain",
+        "provenance": "ir"
+      },
+      {
+        "id": "gap_measurement_of_add__out_ldl_cholesterol",
+        "source": "gap_measurement_of_add",
+        "target": "out_ldl_cholesterol",
+        "label": "The papers identify residual cardiovascular risk that is not captured by LDL-C alone and describe apoB and lipoprotein(a) as important contributors to risk assessment and treatment",
+        "role": "causal",
+        "status": "omitted",
+        "path_type": "upstream",
+        "evidence": "observational",
+        "pmids": [
+          "41504909",
+          "37403458",
+          "38950110",
+          "36216435"
+        ],
+        "style": "plain",
+        "provenance": "ir"
+      },
+      {
+        "id": "gap_earlier_reassessme__out_blood_pressure",
+        "source": "gap_earlier_reassessme",
+        "target": "out_blood_pressure",
+        "label": "The evidence emphasizes that individualized antihypertensive response varies substantially and that prolonged exposure to elevated LDL increases cumulative atherosclerotic burden o",
+        "role": "causal",
+        "status": "omitted",
+        "path_type": "upstream",
+        "evidence": "observational",
+        "pmids": [
+          "37039792",
+          "38969749",
+          "39126771"
+        ],
+        "style": "plain",
+        "provenance": "ir"
+      }
+    ],
+    "mechanisms": [],
+    "moderators": [],
+    "ir_gaps": [
+      "moderator / effect modification \u2014 no way to say 'this edge is weaker in X'; hand-added as a fixture",
+      "mechanism sub-path \u2014 no way to say 'this edge expands into A\u2192B\u2192C'; no edge-refines-edge relation",
+      "edge predicate \u2014 CausalEdge has src/dst but no verb, so every edge label is invented at render time",
+      "node-level evidence \u2014 pmids live on edges only; a never-screened exposure cannot cite its own basis",
+      "per-edge magnitude \u2014 no effect size, so 'supported' cannot be distinguished from 'supported and large'",
+      "intervention\u2192outcome edges are typed as CausalEdge with a do_id in src \u2014 the lever/causal distinction is recovered by string matching against interventions, not by the type system",
+      "no mediator rung in NodeKind \u2014 an intermediate quantity (fat mass, lean mass) has to be mis-typed as proxy or adverse_event, so the palette shows two 'proxies' where the model means one proxy and one step",
+      "a moderator attaches to a CLAIM, not to a rendering \u2014 hence Moderator.expanded_edge_id, which exists only because the same claim is drawn as one arrow collapsed and another arrow expanded",
+      "NodeKind.flag is an untyped catch-all \u2014 it carries no rung, so a durability finding and an un-taken-up problem are the same node type and the four-type resolution has to guess from graph shape. flag-cards.md puts durability under type 02; nothing in the IR says which `flag` nodes those are, and reading it off the label would be exactly the prose-sniffing the kicker map fixed",
+      "no headline on CausalNode \u2014 flag-cards.md \u00a74 wants the consequence in plain speech ('Something is pushing on your weight that nobody has looked at'), separate from the node label ('Insulin resistance'). The IR has `label`, `grounding` and `ask` and no consequence sentence, so the card renders `grounding` in the headline slot",
+      "no interval / duration on an edge \u2014 type 03's caption ('trial judged at 68 weeks \u00b7 your plan at 12') is the payload of that card and there is no field it could come from"
+    ]
+  },
+  "schema": {
+    "$defs": {
+      "EdgeRole": {
+        "enum": [
+          "causal",
+          "lever",
+          "mechanism"
+        ],
+        "title": "EdgeRole",
+        "type": "string"
+      },
+      "EdgeStatus": {
+        "description": "Whether the PLAN accounts for this edge. Distinct from `EvidenceStatus`, which is about whether the LITERATURE does \u2014 a link can be well evidenced and still absent from the plan, and that combination is precisely what an omission is.  `supported`: The plan accounts for this link. `weak`: The plan touches this link only partly, or on contested grounds. `omitted`: The plan is SILENT on this link. This is the diff \u2014 the finding \u2014 not a rendering detail. Absent from the plan is not the same as absent in reality. `missing`: Cannot be judged without information the patient has not supplied. NOT a negative finding: it means we did not ask, and it must never be reported as 'no problem'.",
+        "enum": [
+          "supported",
+          "weak",
+          "omitted",
+          "missing"
+        ],
+        "title": "EdgeStatus",
+        "type": "string"
+      },
+      "EvidenceStatus": {
+        "description": "The grounding gate: a claim is guilty until cited. The default is `hypothesis`, so nothing unsourced can silently read as established fact.  `rct`: Backed by randomised controlled trial evidence, and the PMIDs are attached to this same object. Check them; do not take the label's word for it. `observational`: Backed by observational evidence only, with PMIDs attached. Association, not established causation \u2014 do not restate it as cause. `hypothesis`: NO citation was found or attached. This is a plausible link, NOT an established one. It must be presented as unproven wherever it is repeated. Restating it as fact is the specific error this field exists to prevent.",
+        "enum": [
+          "rct",
+          "observational",
+          "hypothesis"
+        ],
+        "title": "EvidenceStatus",
+        "type": "string"
+      },
+      "FlagCard": {
+        "description": "One finding as flag-cards.md renders it: a type, and the labels its glyph is drawn from.\n\n\u00a75 of that document is a **generation contract** \u2014 the glyph is *derived, not drawn*::\n\n    type          01 | 02 | 03 | 04        -> picks the shape template\n    chain[]       the plan's route nodes    -> the solid boxes, left to right\n    gap_node      label + position          -> the dashed box\n    goal_node     label                     -> the filled box (types 03, 04 may omit)\n    caption       optional                  -> type 03's interval contrast\n\nThat is this model, field for field. The renderer holds four SVG templates and no knowledge of\nthe domain, so a case cannot get a hand-drawn picture and no picture can assert an edge the\ngraph does not have: every label here is a node label that exists in the model.",
+        "properties": {
+          "type": {
+            "description": "FlagType value, e.g. hidden_upstream_driver",
+            "title": "Type",
+            "type": "string"
+          },
+          "code": {
+            "description": "\"01\"..\"04\" \u2014 picks the shape template",
+            "title": "Code",
+            "type": "string"
+          },
+          "label": {
+            "description": "the kicker, verbatim",
+            "title": "Label",
+            "type": "string"
+          },
+          "pattern": {
+            "description": "which FlagPattern fired; recorded so a wrong card is debuggable",
+            "title": "Pattern",
+            "type": "string"
+          },
+          "accent": {
+            "description": "the type's accent colour, declared once in flag_types.TYPE_SPEC",
+            "title": "Accent",
+            "type": "string"
+          },
+          "accent_ink": {
+            "default": "",
+            "description": "the darker companion, for accent-coloured TEXT. The reference cards stroke in `accent` and set label text a shade down, so 11px type on white stays readable at the orange and the green",
+            "title": "Accent Ink",
+            "type": "string"
+          },
+          "chain": {
+            "description": "the plan's own route, left to right \u2014 the solid boxes",
+            "items": {
+              "type": "string"
+            },
+            "title": "Chain",
+            "type": "array"
+          },
+          "gap": {
+            "default": "",
+            "description": "the dashed box. Empty for 03, where the EDGE is the gap",
+            "title": "Gap",
+            "type": "string"
+          },
+          "goal": {
+            "default": "",
+            "description": "the filled box \u2014 what they said they wanted",
+            "title": "Goal",
+            "type": "string"
+          },
+          "caption": {
+            "default": "",
+            "description": "type 03's interval contrast; the IR cannot supply one yet (see IR_GAPS), so it ships empty",
+            "title": "Caption",
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "code",
+          "label",
+          "pattern",
+          "accent"
+        ],
+        "title": "FlagCard",
+        "type": "object"
+      },
+      "GraphEdge": {
+        "properties": {
+          "id": {
+            "description": "Stable identifier for this edge.",
+            "title": "Id",
+            "type": "string"
+          },
+          "source": {
+            "description": "`id` of the node or do-node this edge starts at.",
+            "title": "Source",
+            "type": "string"
+          },
+          "target": {
+            "description": "`id` of the node this edge points to.",
+            "title": "Target",
+            "type": "string"
+          },
+          "label": {
+            "default": "",
+            "description": "CausalEdge.note \u2014 the IR has no predicate (see IR_GAPS)",
+            "title": "Label",
+            "type": "string"
+          },
+          "role": {
+            "$ref": "#/$defs/EdgeRole",
+            "default": "causal",
+            "description": "What kind of link this is in the rendered graph."
+          },
+          "status": {
+            "$ref": "#/$defs/EdgeStatus",
+            "default": "supported",
+            "description": "The claim about the PLAN, not about the evidence. `omitted` means the plan is silent on this link \u2014 absent from the plan is NOT absent in reality. `missing` means we could not judge it without information the patient did not give; it is not a clean result."
+          },
+          "path_type": {
+            "$ref": "#/$defs/PathType",
+            "default": "upstream",
+            "description": "Whether this link runs upstream, through a proxy, or bypasses the proxy entirely."
+          },
+          "evidence": {
+            "$ref": "#/$defs/EvidenceStatus",
+            "default": "hypothesis",
+            "description": "The evidence axis, INDEPENDENT of `status`. `hypothesis` means NO citation was found \u2014 never restate it as established. `rct`/`observational` mean at least one PMID is attached, and you should check them rather than take the label's word."
+          },
+          "pmids": {
+            "description": "PubMed identifiers supporting THIS relationship. Empty is common and honest: nothing was retrieved for this edge, NOT that the link is refuted. Read alongside `evidence`.",
+            "items": {
+              "type": "string"
+            },
+            "title": "Pmids",
+            "type": "array"
+          },
+          "style": {
+            "$ref": "#/$defs/LineStyle",
+            "default": "plain",
+            "description": "Derived palette key. Presentation only \u2014 carries no clinical meaning and should be ignored when reasoning."
+          },
+          "provenance": {
+            "$ref": "#/$defs/Provenance",
+            "default": "ir",
+            "description": "Which engine produced this edge. Same caveat as the node field."
+          }
+        },
+        "required": [
+          "id",
+          "source",
+          "target"
+        ],
+        "title": "GraphEdge",
+        "type": "object"
+      },
+      "GraphNode": {
+        "description": "A rendered node. `kind` is the IR's own vocabulary; `style_class` is the derived palette key.",
+        "properties": {
+          "id": {
+            "description": "Stable identifier, unique across nodes AND intervention do-nodes \u2014 one shared namespace. Edges reference it.",
+            "title": "Id",
+            "type": "string"
+          },
+          "label": {
+            "description": "Display text, two lines: the clinical noun, then a verdict on its status IN THIS PLAN. The second line is the finding.",
+            "title": "Label",
+            "type": "string"
+          },
+          "role": {
+            "$ref": "#/$defs/NodeRole",
+            "description": "Whether this is a causal node or an intervention do-node. Decides which vocabulary `kind` uses."
+          },
+          "kind": {
+            "description": "Which rung or mechanism this node is. Causal nodes use the NodeKind vocabulary; intervention do-nodes use InterventionMechanism.",
+            "title": "Kind",
+            "type": "string",
+            "x-vocabularies": {
+              "InterventionMechanism": {
+                "etiologic": "Acts on this patient's upstream cause, so the improvement can persist after the treatment stops.",
+                "suppressive": "Clamps a mediator regardless of what is causing it. The number improves while taken and typically REBOUNDS on stopping. Not a criticism \u2014 it is often the right choice \u2014 but a plan made only of these has no exit.",
+                "unknown": "Mechanism not established here. Report as unknown; do not infer either of the above from the drug class."
+              },
+              "NodeKind": {
+                "adverse_event": "A downstream harm caused by something in the plan \u2014 e.g. muscle loss on a GLP-1. Not a hypothetical risk: something this plan makes more likely.",
+                "exposure": "An upstream lever this person can actually move (a drug they take, a habit, a stacked substance). May sit at either cause rung.",
+                "flag": "A priority problem node, called out for attention.",
+                "hassle": "A downstream cost in effort, money or inconvenience. Real enough to end adherence, which makes it a clinical fact rather than a lifestyle note.",
+                "proxy": "The SURROGATE the plan optimises \u2014 e.g. body weight, LDL. NOT the goal. Improving it is not the same as getting what the patient wants, and conflating the two is the single most common failure this audit looks for.",
+                "real_outcome": "What the patient actually wants and can feel \u2014 energy, healthspan, a pregnancy. The thing the proxy is standing in for.",
+                "root_cause": "The deepest modifiable driver of this person's problem \u2014 e.g. insulin resistance. Exactly one per model. What the plan should be aimed at.",
+                "surface_cause": "A proximate mechanism between the root and the proxy \u2014 e.g. appetite, energy expenditure. Real, but treating it alone leaves the root untouched."
+              }
+            }
+          },
+          "style_class": {
+            "description": "palette key shared with the Mermaid projection",
+            "title": "Style Class",
+            "type": "string"
+          },
+          "in_plan_view": {
+            "default": true,
+            "description": "true = the plan's own reasoning already accounts for this. false = the audit added it. THE DIFF BETWEEN THE TWO IS THE PRODUCT \u2014 a graph where everything is true has found nothing.",
+            "title": "In Plan View",
+            "type": "boolean"
+          },
+          "grounding": {
+            "default": "",
+            "description": "Why we believe this, or what would settle it ('would be settled by a fasting insulin'). Never a citation \u2014 citations live on edges as `pmids`.",
+            "title": "Grounding",
+            "type": "string"
+          },
+          "ask": {
+            "default": "",
+            "description": "For `in_plan_view: false` only: the question to say out loud in an appointment, in the patient's own voice. Empty for anything the plan already covers.",
+            "title": "Ask",
+            "type": "string"
+          },
+          "finding_rank": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "Position in the ranked findings list, or null for 'not a finding'. The order the literature search used, so a reader and the retrieval agree.",
+            "title": "Finding Rank"
+          },
+          "flag_card": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/FlagCard"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "The card this finding renders as, when it is one. null otherwise."
+          },
+          "provenance": {
+            "$ref": "#/$defs/Provenance",
+            "default": "ir",
+            "description": "Which engine produced this node. `llm_judged` means a model's reading with NO retrieval behind the graph itself \u2014 treat it as a candidate, never as evidence."
+          },
+          "concept": {
+            "default": "",
+            "description": "The single clinical entity this node denotes, as a bare noun a clinician would search for. Empty is a real answer for a node that denotes no clinical entity at all.",
+            "title": "Concept",
+            "type": "string"
+          },
+          "cui": {
+            "default": "",
+            "description": "UMLS Concept Unique Identifier for `concept`, assigned by a terminology resolver AFTER the producer ran. Never model-generated. Empty means the concept did not resolve \u2014 NOT that none exists.",
+            "title": "Cui",
+            "type": "string"
+          },
+          "snomed_id": {
+            "default": "",
+            "description": "SNOMED CT identifier for `concept`, same provenance and same caveat as `cui`. This is the id to join on when merging this graph with another system's data.",
+            "title": "Snomed Id",
+            "type": "string"
+          },
+          "absent_term": {
+            "default": "",
+            "description": "For `in_plan_view: false` nodes: the word that WOULD appear in the plan if it addressed this, and does not. \u26a0\ufe0f Do NOT treat its presence in the plan text as proof the gap is false \u2014 a plan often names a thing in order to skip it.",
+            "title": "Absent Term",
+            "type": "string"
+          },
+          "triggered_by": {
+            "default": "",
+            "description": "For `in_plan_view: false` nodes: a verbatim span from the plan showing this gap applies to THIS person rather than being generic best practice. Verified against the source at build time; a fabricated quote drops the node.",
+            "title": "Triggered By",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "label",
+          "role",
+          "kind",
+          "style_class"
+        ],
+        "title": "GraphNode",
+        "type": "object"
+      },
+      "LineStyle": {
+        "enum": [
+          "plain",
+          "dashed",
+          "bold"
+        ],
+        "title": "LineStyle",
+        "type": "string"
+      },
+      "Mechanism": {
+        "description": "The sub-path one edge expands into \u2014 the whole point of the island.\n\n\u26a0 `CausalModel` has no edge-refines-edge relation, so every instance of this is a fixture today.",
+        "properties": {
+          "edge_id": {
+            "description": "the edge this replaces when expanded",
+            "title": "Edge Id",
+            "type": "string"
+          },
+          "summary": {
+            "default": "",
+            "description": "One-line statement of the mechanism this group of nodes and edges describes.",
+            "title": "Summary",
+            "type": "string"
+          },
+          "nodes": {
+            "items": {
+              "$ref": "#/$defs/GraphNode"
+            },
+            "title": "Nodes",
+            "type": "array"
+          },
+          "edges": {
+            "items": {
+              "$ref": "#/$defs/GraphEdge"
+            },
+            "title": "Edges",
+            "type": "array"
+          },
+          "provenance": {
+            "$ref": "#/$defs/Provenance",
+            "default": "fixture",
+            "description": "Which engine asserted this mechanism."
+          }
+        },
+        "required": [
+          "edge_id"
+        ],
+        "title": "Mechanism",
+        "type": "object"
+      },
+      "Moderator": {
+        "description": "Effect modification on an edge \u2014 'this edge is weaker/stronger when Z'.\n\n\u26a0 Not in `CausalModel` at all (the known edge-annotation gap). Fixture-only today.",
+        "properties": {
+          "id": {
+            "description": "Stable identifier for this moderator.",
+            "title": "Id",
+            "type": "string"
+          },
+          "edge_id": {
+            "description": "the edge it badges while that edge is collapsed",
+            "title": "Edge Id",
+            "type": "string"
+          },
+          "expanded_edge_id": {
+            "default": "",
+            "description": "the interior edge it really acts on once the parent edge is expanded. That this field has to exist IS the gap: a moderator attaches to a *claim*, and one claim has two renderings (collapsed arrow / opened sub-path). An edge-annotation slot on the IR would carry the attachment once and let the projection place it.",
+            "title": "Expanded Edge Id",
+            "type": "string"
+          },
+          "label": {
+            "description": "What is being moderated, in display text.",
+            "title": "Label",
+            "type": "string"
+          },
+          "direction": {
+            "$ref": "#/$defs/ModeratorDirection",
+            "default": "unknown",
+            "description": "Whether this moderator strengthens or weakens the relationship it attaches to."
+          },
+          "detail": {
+            "default": "",
+            "description": "The specific condition under which the moderation applies.",
+            "title": "Detail",
+            "type": "string"
+          },
+          "evidence": {
+            "default": "hypothesis",
+            "description": "Evidence tier for the moderation claim. Same semantics as `GraphEdge.evidence`.",
+            "title": "Evidence",
+            "type": "string"
+          },
+          "pmids": {
+            "description": "PubMed identifiers supporting the moderation claim. Empty means none were retrieved.",
+            "items": {
+              "type": "string"
+            },
+            "title": "Pmids",
+            "type": "array"
+          },
+          "provenance": {
+            "$ref": "#/$defs/Provenance",
+            "default": "fixture",
+            "description": "Which engine asserted this moderator."
+          }
+        },
+        "required": [
+          "id",
+          "edge_id",
+          "label"
+        ],
+        "title": "Moderator",
+        "type": "object"
+      },
+      "ModeratorDirection": {
+        "enum": [
+          "amplifies",
+          "attenuates",
+          "unknown"
+        ],
+        "title": "ModeratorDirection",
+        "type": "string"
+      },
+      "NodeRole": {
+        "enum": [
+          "causal",
+          "intervention",
+          "mechanism"
+        ],
+        "title": "NodeRole",
+        "type": "string"
+      },
+      "PathType": {
+        "description": "Where an edge sits relative to the proxy. This is the audit's key distinction: a plan that contains only `through_proxy` edges has assumed the proxy is the only route to what the patient wants, and every `bypass` edge is a counter-example to that assumption.  `upstream`: Cause to cause, above the proxy \u2014 root to surface. The part of the picture a plan aimed at the proxy never touches. `through_proxy`: Lever to proxy to outcome: the plan's assumed single funnel. Moving the proxy is assumed to move the outcome. `bypass`: Cause or lever reaching the outcome DIRECTLY, skipping the proxy. Each one is a route to what the patient wants that the plan is not using \u2014 the audit's payoff.",
+        "enum": [
+          "upstream",
+          "through_proxy",
+          "bypass"
+        ],
+        "title": "PathType",
+        "type": "string"
+      },
+      "Provenance": {
+        "description": "Where a piece of the rendered graph came from. The UI badges anything that is not `ir`.",
+        "enum": [
+          "ir",
+          "fixture"
+        ],
+        "title": "Provenance",
+        "type": "string"
+      }
+    },
+    "description": "The wire format. Stable, versioned, and the *only* thing the frontend knows about the domain.",
+    "properties": {
+      "contract_version": {
+        "default": "causal-graph/2",
+        "title": "Contract Version",
+        "type": "string"
+      },
+      "case_id": {
+        "title": "Case Id",
+        "type": "string"
+      },
+      "title": {
+        "default": "",
+        "title": "Title",
+        "type": "string"
+      },
+      "subtitle": {
+        "default": "",
+        "title": "Subtitle",
+        "type": "string"
+      },
+      "nodes": {
+        "description": "Every node: causal nodes AND intervention do-nodes, in ONE shared id namespace. Read `in_plan_view` on each to separate what the plan already covers from what the audit added \u2014 that difference is the product.",
+        "items": {
+          "$ref": "#/$defs/GraphNode"
+        },
+        "title": "Nodes",
+        "type": "array"
+      },
+      "edges": {
+        "items": {
+          "$ref": "#/$defs/GraphEdge"
+        },
+        "title": "Edges",
+        "type": "array"
+      },
+      "mechanisms": {
+        "items": {
+          "$ref": "#/$defs/Mechanism"
+        },
+        "title": "Mechanisms",
+        "type": "array"
+      },
+      "moderators": {
+        "items": {
+          "$ref": "#/$defs/Moderator"
+        },
+        "title": "Moderators",
+        "type": "array"
+      },
+      "ir_gaps": {
+        "description": "shipped in the payload so the UI can show, in situ, what the ontology cannot say",
+        "items": {
+          "type": "string"
+        },
+        "title": "Ir Gaps",
+        "type": "array"
+      }
+    },
+    "required": [
+      "case_id"
+    ],
+    "title": "CausalGraph",
+    "type": "object"
+  },
+  "mermaid": "flowchart TD\n  out_blood_pressure[\"blood pressure\nwhat the plan targets\"]\n  out_ldl_cholesterol[\"LDL cholesterol\nwhat the plan targets\"]\n  gap_any_plan_to_check[\"Any plan to check for lisinopril-induced cough and switch to an ARB if cough limits adherence\nthe literature says this matters here\"]\n  gap_followup_ldl_meas[\"Follow-up LDL measurement and treatment intensification if LDL reduction is inadequate (for example adding ezetimibe or other nonstatin therapy)\nthe literature says this matters here\"]\n  gap_measurement_of_add[\"Measurement of additional lipid risk markers such as lipoprotein(a), non-HDL cholesterol, triglycerides, or apolipoprotein B\nthe literature says this matters here\"]\n  gap_earlier_reassessme[\"Earlier reassessment than six months to evaluate whether blood pressure and LDL are responding adequately to therapy\nthe literature says this matters here\"]\n  do_lisinopril{{\"Lisinopril 20 mg daily\"}}\n  do_atorvastatin{{\"Atorvastatin 40 mg\"}}\n  do_lisinopril ==> out_blood_pressure\n  do_atorvastatin ==> out_ldl_cholesterol\n  gap_any_plan_to_check --> out_blood_pressure\n  gap_followup_ldl_meas --> out_ldl_cholesterol\n  gap_measurement_of_add --> out_ldl_cholesterol\n  gap_earlier_reassessme --> out_blood_pressure\n  classDef outcome fill:#f1f5f9,color:#0f172a,stroke:#94a3b8;\n  classDef act fill:#dbeafe,color:#1e3a8a,stroke:#2563eb;\n  classDef flag fill:#fee2e2,color:#991b1b,stroke:#dc2626,stroke-width:2px;\n  class out_blood_pressure,out_ldl_cholesterol outcome;\n  class do_lisinopril,do_atorvastatin act;\n  class gap_any_plan_to_check,gap_followup_ldl_meas,gap_measurement_of_add,gap_earlier_reassessme flag;\n",
+  "how_to_read_this": [
+    "This is an evidence AUDIT of a plan, not medical advice and not a diagnosis.",
+    "`evidence: hypothesis` means NO citation was found. Never restate it as established.",
+    "`pmids: []` means nothing was retrieved for that edge \u2014 NOT that the link is refuted.",
+    "`status: omitted` means the plan is silent on a link. Absent from the plan is not absent in reality.",
+    "`in_plan_view: false` means the node is absent from the plan's own picture of itself. The DIFFERENCE between the two views is the finding.",
+    "`cui`/`snomed_id` empty means the concept did not resolve \u2014 not that none exists.",
+    "When `builder` is `llm_judged`, no literature retrieval ran for the graph itself: treat it as a candidate generator, never as an evidence engine.",
+    "NO INTAKE SCREENING RAN. If you serve this to patients, apply your own."
+  ]
+}
