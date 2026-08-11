@@ -45,35 +45,53 @@ at least 90s or it will look like an outage.
 }
 ```
 
-Files in this repo are a **real** response, not a mock: `sample_input.txt` → `sample_output.json` and `sample_diagram.mmd`.
+Files in this repo are a **real** response from the live endpoint, not a mock: `sample_input.txt` →
+`sample_output.json` and `sample_diagram.mmd`.
 
-**This is the actual graph from `sample_input.txt`** — a 54-year-old on lisinopril and atorvastatin, told to lose weight and come back in six months:
+**This is the actual graph from `sample_input.txt`** — a 54-year-old who stopped atorvastatin for
+muscle aches, was switched to Repatha, and told to recheck lipids in three months:
 
 ```mermaid
 flowchart TD
-  out_blood_pressure["blood pressure<br/>what the plan targets"]
   out_ldl_cholesterol["LDL cholesterol<br/>what the plan targets"]
-  gap_any_plan_to_check["Any plan to check for lisinopril-induced cough and switch to an ARB if cough limits adherence<br/>the literature says this matters here"]
-  gap_followup_ldl_meas["Follow-up LDL measurement and treatment intensification if LDL reduction is inadequate (for example adding ezetimibe or other nonstatin therapy)<br/>the literature says this matters here"]
-  gap_measurement_of_add["Measurement of additional lipid risk markers such as lipoprotein(a), non-HDL cholesterol, triglycerides, or apolipoprotein B<br/>the literature says this matters here"]
-  gap_earlier_reassessme["Earlier reassessment than six months to evaluate whether blood pressure and LDL are responding adequately to therapy<br/>the literature says this matters here"]
-  do_lisinopril{{"Lisinopril 20 mg daily"}}
-  do_atorvastatin{{"Atorvastatin 40 mg"}}
-  do_lisinopril ==> out_blood_pressure
+  out_platelet_aggregati["platelet aggregation<br/>what the plan targets"]
+  gap_a_specific_ldlc_t["A specific LDL-C treatment target (such as <70 mg/dL or <55 mg/dL) and a plan to intensify therapy if that target is not reached<br/>the literature says this matters here"]
+  gap_consideration_of_a["Consideration of additional nonstatin LDL-lowering therapy such as ezetimibe or combination therapy if evolocumab alone does not achieve adequate LDL-C reduction after statin intolerance<br/>the literature says this matters here"]
+  gap_assessment_of_lipo["Assessment of lipoprotein(a) as a contributor to residual cardiovascular risk<br/>the literature says this matters here"]
+  gap_assessment_of_addi["Assessment of additional lipid risk markers such as apolipoprotein B (apoB)<br/>the literature says this matters here"]
+  do_atorvastatin{{"Atorvastatin 80 mg daily"}}
+  do_evolocumab{{"Evolocumab 140 mg subcutaneous every two weeks"}}
+  do_aspirin{{"Aspirin 81 mg daily"}}
   do_atorvastatin ==> out_ldl_cholesterol
-  gap_any_plan_to_check --> out_blood_pressure
-  gap_followup_ldl_meas --> out_ldl_cholesterol
-  gap_measurement_of_add --> out_ldl_cholesterol
-  gap_earlier_reassessme --> out_blood_pressure
+  do_evolocumab ==> out_ldl_cholesterol
+  do_aspirin ==> out_platelet_aggregati
+  gap_a_specific_ldlc_t --> out_ldl_cholesterol
+  gap_consideration_of_a --> out_ldl_cholesterol
+  gap_assessment_of_lipo --> out_ldl_cholesterol
+  gap_assessment_of_addi --> out_ldl_cholesterol
   classDef outcome fill:#f1f5f9,color:#0f172a,stroke:#94a3b8;
   classDef act fill:#dbeafe,color:#1e3a8a,stroke:#2563eb;
   classDef flag fill:#fee2e2,color:#991b1b,stroke:#dc2626,stroke-width:2px;
-  class out_blood_pressure,out_ldl_cholesterol outcome;
-  class do_lisinopril,do_atorvastatin act;
-  class gap_any_plan_to_check,gap_followup_ldl_meas,gap_measurement_of_add,gap_earlier_reassessme flag;
+  class out_ldl_cholesterol,out_platelet_aggregati outcome;
+  class do_atorvastatin,do_evolocumab,do_aspirin act;
+  class gap_a_specific_ldlc_t,gap_consideration_of_a,gap_assessment_of_lipo,gap_assessment_of_addi flag;
 ```
 
-Rounded boxes are what the plan targets. The four `gap_` nodes are what it never addressed — each one cites a paper.
+Hexagons are what the plan does, rounded boxes are what those acts target, and the four `gap_` nodes
+are what the plan never addressed — **each one cites a paper.**
+
+`mermaid` is a plain string, so it drops straight into a ChatGPT or Claude conversation and renders
+there too. The `graph` object next to it is the same content as data, which is the more useful half:
+it is meant to be queried, joined and reasoned over, not just looked at.
+
+### What varies between runs, and what does not
+
+Retrieval is not deterministic, so **the number of findings moves**. Three runs of this exact input
+returned 4, 3 and 3 findings. Do not build anything that assumes a fixed count.
+
+What holds on every run: **each finding carries at least one PubMed ID.** That is structural, not a
+quality target — an uncited finding cannot be constructed in the model that produces this response,
+so there is no code path that emits one.
 
 ### The graph is two layers, and the DIFFERENCE is the product
 

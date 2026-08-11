@@ -1,7 +1,7 @@
 {
   "contract_version": "causal-graph/2",
   "builder": "evidence_first",
-  "seconds": 17.4,
+  "seconds": 17.1,
   "graph": {
     "contract_version": "causal-graph/2",
     "case_id": "",
@@ -9,31 +9,13 @@
     "subtitle": "",
     "nodes": [
       {
-        "id": "out_blood_pressure",
-        "label": "blood pressure\nwhat the plan targets",
-        "role": "causal",
-        "kind": "real_outcome",
-        "style_class": "outcome",
-        "in_plan_view": true,
-        "grounding": "the plan impliedly acts on this: \u201clisinopril 20 mg daily for blood pressure\u201d",
-        "ask": "",
-        "finding_rank": null,
-        "flag_card": null,
-        "provenance": "ir",
-        "concept": "blood pressure",
-        "cui": "",
-        "snomed_id": "",
-        "absent_term": "",
-        "triggered_by": ""
-      },
-      {
         "id": "out_ldl_cholesterol",
         "label": "LDL cholesterol\nwhat the plan targets",
         "role": "causal",
         "kind": "real_outcome",
         "style_class": "outcome",
         "in_plan_view": true,
-        "grounding": "the plan impliedly acts on this: \u201catorvastatin 40 mg because my LDL was 165\u201d",
+        "grounding": "the plan impliedly acts on this: \u201catorvastatin 80 mg daily\u201d",
         "ask": "",
         "finding_rank": null,
         "flag_card": null,
@@ -45,14 +27,32 @@
         "triggered_by": ""
       },
       {
-        "id": "gap_any_plan_to_check",
-        "label": "Any plan to check for lisinopril-induced cough and switch to an ARB if cough limits adherence\nthe literature says this matters here",
+        "id": "out_platelet_aggregati",
+        "label": "platelet aggregation\nwhat the plan targets",
+        "role": "causal",
+        "kind": "real_outcome",
+        "style_class": "outcome",
+        "in_plan_view": true,
+        "grounding": "the plan impliedly acts on this: \u201cContinue aspirin 81 mg daily\u201d",
+        "ask": "",
+        "finding_rank": null,
+        "flag_card": null,
+        "provenance": "ir",
+        "concept": "platelet aggregation",
+        "cui": "",
+        "snomed_id": "",
+        "absent_term": "",
+        "triggered_by": ""
+      },
+      {
+        "id": "gap_a_specific_ldlc_t",
+        "label": "A specific LDL-C treatment target (such as <70 mg/dL or <55 mg/dL) and a plan to intensify therapy if that target is not reached\nthe literature says this matters here",
         "role": "causal",
         "kind": "flag",
         "style_class": "flag",
         "in_plan_view": false,
-        "grounding": "ACE inhibitors commonly cause cough, and cough-related intolerance can reduce adherence or require changing therapy, affecting blood pressure control.",
-        "ask": "\u201cCan we look at Any plan to check for lisinopril-induced cough and switch to an ARB if cough limits adhere?\u201d",
+        "grounding": "Trials in patients with atherosclerotic cardiovascular disease showed that LDL-C target\u2013directed treatment strategies and more intensive LDL-C goals were associated with improved cardiovascular outcomes compared with less intensive approaches. Rechecking lipids without defining a target leaves no threshold for escalation if LDL-C remains markedly elevated.",
+        "ask": "\u201cCan we look at A specific LDL-C treatment target (such as <70 mg/dL or <55 mg/dL) and a plan to intensify?\u201d",
         "finding_rank": 0,
         "flag_card": {
           "type": "hidden_upstream_driver",
@@ -62,10 +62,10 @@
           "accent": "#1f3be0",
           "accent_ink": "#1730a8",
           "chain": [
-            "Lisinopril 20 mg da\u2026",
-            "blood pressure"
+            "Atorvastatin 80 mg\u2026",
+            "LDL cholesterol"
           ],
-          "gap": "Any plan to check f\u2026",
+          "gap": "A specific LDL-C tr\u2026",
           "goal": "",
           "caption": ""
         },
@@ -73,18 +73,18 @@
         "concept": "",
         "cui": "",
         "snomed_id": "",
-        "absent_term": "Any plan to check for lisinopril-induced cough and switch to",
-        "triggered_by": "My doctor started me on lisinopril 20 mg daily"
+        "absent_term": "A specific LDL-C treatment target (such as <70 mg/dL or <55 ",
+        "triggered_by": "Recheck lipid panel in three months."
       },
       {
-        "id": "gap_followup_ldl_meas",
-        "label": "Follow-up LDL measurement and treatment intensification if LDL reduction is inadequate (for example adding ezetimibe or other nonstatin therapy)\nthe literature says this matters here",
+        "id": "gap_consideration_of_a",
+        "label": "Consideration of additional nonstatin LDL-lowering therapy such as ezetimibe or combination therapy if evolocumab alone does not achieve adequate LDL-C reduction after statin intolerance\nthe literature says this matters here",
         "role": "causal",
         "kind": "flag",
         "style_class": "flag",
         "in_plan_view": false,
-        "grounding": "The literature emphasizes that many patients do not achieve adequate LDL lowering on statins alone and that additional LDL-lowering therapy can produce substantially larger LDL reductions when needed.",
-        "ask": "\u201cCan we look at Follow-up LDL measurement and treatment intensification if LDL reduction is inadequate (fo?\u201d",
+        "grounding": "The literature provided identifies ezetimibe, bempedoic acid, and PCSK9 inhibitors as complementary LDL-lowering options, and combination therapy can produce substantially greater LDL-C lowering than single-agent therapy. The current plan switches from atorvastatin directly to evolocumab but does not address escalation pathways if LDL-C remains uncontrolled.",
+        "ask": "\u201cCan we look at Consideration of additional nonstatin LDL-lowering therapy such as ezetimibe or combinatio?\u201d",
         "finding_rank": 1,
         "flag_card": {
           "type": "hidden_upstream_driver",
@@ -94,10 +94,10 @@
           "accent": "#1f3be0",
           "accent_ink": "#1730a8",
           "chain": [
-            "Atorvastatin 40 mg",
+            "Atorvastatin 80 mg\u2026",
             "LDL cholesterol"
           ],
-          "gap": "Follow-up LDL measu\u2026",
+          "gap": "Consideration of ad\u2026",
           "goal": "",
           "caption": ""
         },
@@ -105,18 +105,18 @@
         "concept": "",
         "cui": "",
         "snomed_id": "",
-        "absent_term": "Follow-up LDL measurement and treatment intensification if L",
-        "triggered_by": "atorvastatin 40 mg because my LDL was 165"
+        "absent_term": "Consideration of additional nonstatin LDL-lowering therapy s",
+        "triggered_by": "Stopped the statin after six weeks of muscle aches. Started Repatha (evolocumab) 140 mg subcutaneous every two weeks."
       },
       {
-        "id": "gap_measurement_of_add",
-        "label": "Measurement of additional lipid risk markers such as lipoprotein(a), non-HDL cholesterol, triglycerides, or apolipoprotein B\nthe literature says this matters here",
+        "id": "gap_assessment_of_lipo",
+        "label": "Assessment of lipoprotein(a) as a contributor to residual cardiovascular risk\nthe literature says this matters here",
         "role": "causal",
         "kind": "flag",
         "style_class": "flag",
         "in_plan_view": false,
-        "grounding": "The papers identify residual cardiovascular risk that is not captured by LDL-C alone and describe apoB and lipoprotein(a) as important contributors to risk assessment and treatment decisions.",
-        "ask": "\u201cCan we look at Measurement of additional lipid risk markers such as lipoprotein(a), non-HDL cholesterol, ?\u201d",
+        "grounding": "The retrieved literature identifies lipoprotein(a) as an important contributor to residual cardiovascular risk beyond LDL-C, and evolocumab has been shown to lower lipoprotein(a). The plan focuses only on LDL-C monitoring and does not address whether elevated lipoprotein(a) may be contributing to risk in this patient with severe hypercholesterolemia.",
+        "ask": "\u201cCan we look at Assessment of lipoprotein(a) as a contributor to residual cardiovascular risk?\u201d",
         "finding_rank": 2,
         "flag_card": {
           "type": "hidden_upstream_driver",
@@ -126,10 +126,10 @@
           "accent": "#1f3be0",
           "accent_ink": "#1730a8",
           "chain": [
-            "Atorvastatin 40 mg",
+            "Atorvastatin 80 mg\u2026",
             "LDL cholesterol"
           ],
-          "gap": "Measurement of addi\u2026",
+          "gap": "Assessment of lipop\u2026",
           "goal": "",
           "caption": ""
         },
@@ -137,18 +137,18 @@
         "concept": "",
         "cui": "",
         "snomed_id": "",
-        "absent_term": "Measurement of additional lipid risk markers such as lipopro",
-        "triggered_by": "atorvastatin 40 mg because my LDL was 165"
+        "absent_term": "Assessment of lipoprotein(a) as a contributor to residual ca",
+        "triggered_by": "LDL cholesterol 190 mg/dL"
       },
       {
-        "id": "gap_earlier_reassessme",
-        "label": "Earlier reassessment than six months to evaluate whether blood pressure and LDL are responding adequately to therapy\nthe literature says this matters here",
+        "id": "gap_assessment_of_addi",
+        "label": "Assessment of additional lipid risk markers such as apolipoprotein B (apoB)\nthe literature says this matters here",
         "role": "causal",
         "kind": "flag",
         "style_class": "flag",
         "in_plan_view": false,
-        "grounding": "The evidence emphasizes that individualized antihypertensive response varies substantially and that prolonged exposure to elevated LDL increases cumulative atherosclerotic burden over time.",
-        "ask": "\u201cCan we look at Earlier reassessment than six months to evaluate whether blood pressure and LDL are respon?\u201d",
+        "grounding": "The literature provided states that apoB measurement may outperform LDL-C alone for predicting atherosclerotic cardiovascular disease risk and discusses its clinical use when LDL-C does not fully capture atherogenic particle burden. The current plan monitors only a standard lipid panel.",
+        "ask": "\u201cCan we look at Assessment of additional lipid risk markers such as apolipoprotein B (apoB)?\u201d",
         "finding_rank": 3,
         "flag_card": {
           "type": "hidden_upstream_driver",
@@ -158,10 +158,10 @@
           "accent": "#1f3be0",
           "accent_ink": "#1730a8",
           "chain": [
-            "Lisinopril 20 mg da\u2026",
-            "blood pressure"
+            "Atorvastatin 80 mg\u2026",
+            "LDL cholesterol"
           ],
-          "gap": "Earlier reassessmen\u2026",
+          "gap": "Assessment of addit\u2026",
           "goal": "",
           "caption": ""
         },
@@ -169,12 +169,12 @@
         "concept": "",
         "cui": "",
         "snomed_id": "",
-        "absent_term": "Earlier reassessment than six months to evaluate whether blo",
-        "triggered_by": "He said to lose weight and come back in six months."
+        "absent_term": "Assessment of additional lipid risk markers such as apolipop",
+        "triggered_by": "Recheck lipid panel in three months."
       },
       {
-        "id": "do_lisinopril",
-        "label": "Lisinopril 20 mg daily",
+        "id": "do_atorvastatin",
+        "label": "Atorvastatin 80 mg daily",
         "role": "intervention",
         "kind": "unknown",
         "style_class": "act",
@@ -191,8 +191,26 @@
         "triggered_by": ""
       },
       {
-        "id": "do_atorvastatin",
-        "label": "Atorvastatin 40 mg",
+        "id": "do_evolocumab",
+        "label": "Evolocumab 140 mg subcutaneous every two weeks",
+        "role": "intervention",
+        "kind": "unknown",
+        "style_class": "act",
+        "in_plan_view": true,
+        "grounding": "",
+        "ask": "",
+        "finding_rank": null,
+        "flag_card": null,
+        "provenance": "ir",
+        "concept": "",
+        "cui": "",
+        "snomed_id": "",
+        "absent_term": "",
+        "triggered_by": ""
+      },
+      {
+        "id": "do_aspirin",
+        "label": "Aspirin 81 mg daily",
         "role": "intervention",
         "kind": "unknown",
         "style_class": "act",
@@ -211,19 +229,6 @@
     ],
     "edges": [
       {
-        "id": "do_lisinopril__out_blood_pressure",
-        "source": "do_lisinopril",
-        "target": "out_blood_pressure",
-        "label": "",
-        "role": "lever",
-        "status": "supported",
-        "path_type": "upstream",
-        "evidence": "hypothesis",
-        "pmids": [],
-        "style": "bold",
-        "provenance": "ir"
-      },
-      {
         "id": "do_atorvastatin__out_ldl_cholesterol",
         "source": "do_atorvastatin",
         "target": "out_ldl_cholesterol",
@@ -237,67 +242,91 @@
         "provenance": "ir"
       },
       {
-        "id": "gap_any_plan_to_check__out_blood_pressure",
-        "source": "gap_any_plan_to_check",
-        "target": "out_blood_pressure",
-        "label": "ACE inhibitors commonly cause cough, and cough-related intolerance can reduce adherence or require changing therapy, affecting blood pressure control.",
+        "id": "do_evolocumab__out_ldl_cholesterol",
+        "source": "do_evolocumab",
+        "target": "out_ldl_cholesterol",
+        "label": "",
+        "role": "lever",
+        "status": "supported",
+        "path_type": "upstream",
+        "evidence": "hypothesis",
+        "pmids": [],
+        "style": "bold",
+        "provenance": "ir"
+      },
+      {
+        "id": "do_aspirin__out_platelet_aggregati",
+        "source": "do_aspirin",
+        "target": "out_platelet_aggregati",
+        "label": "",
+        "role": "lever",
+        "status": "supported",
+        "path_type": "upstream",
+        "evidence": "hypothesis",
+        "pmids": [],
+        "style": "bold",
+        "provenance": "ir"
+      },
+      {
+        "id": "gap_a_specific_ldlc_t__out_ldl_cholesterol",
+        "source": "gap_a_specific_ldlc_t",
+        "target": "out_ldl_cholesterol",
+        "label": "Trials in patients with atherosclerotic cardiovascular disease showed that LDL-C target\u2013directed treatment strategies and more intensive LDL-C goals were associated with improved c",
         "role": "causal",
         "status": "omitted",
         "path_type": "upstream",
         "evidence": "observational",
         "pmids": [
-          "37417783"
+          "41910315",
+          "36877807"
         ],
         "style": "plain",
         "provenance": "ir"
       },
       {
-        "id": "gap_followup_ldl_meas__out_ldl_cholesterol",
-        "source": "gap_followup_ldl_meas",
+        "id": "gap_consideration_of_a__out_ldl_cholesterol",
+        "source": "gap_consideration_of_a",
         "target": "out_ldl_cholesterol",
-        "label": "The literature emphasizes that many patients do not achieve adequate LDL lowering on statins alone and that additional LDL-lowering therapy can produce substantially larger LDL red",
+        "label": "The literature provided identifies ezetimibe, bempedoic acid, and PCSK9 inhibitors as complementary LDL-lowering options, and combination therapy can produce substantially greater ",
         "role": "causal",
         "status": "omitted",
         "path_type": "upstream",
         "evidence": "observational",
         "pmids": [
           "41504909",
-          "33514449"
+          "33514449",
+          "39565634"
         ],
         "style": "plain",
         "provenance": "ir"
       },
       {
-        "id": "gap_measurement_of_add__out_ldl_cholesterol",
-        "source": "gap_measurement_of_add",
+        "id": "gap_assessment_of_lipo__out_ldl_cholesterol",
+        "source": "gap_assessment_of_lipo",
         "target": "out_ldl_cholesterol",
-        "label": "The papers identify residual cardiovascular risk that is not captured by LDL-C alone and describe apoB and lipoprotein(a) as important contributors to risk assessment and treatment",
+        "label": "The retrieved literature identifies lipoprotein(a) as an important contributor to residual cardiovascular risk beyond LDL-C, and evolocumab has been shown to lower lipoprotein(a). ",
         "role": "causal",
         "status": "omitted",
         "path_type": "upstream",
         "evidence": "observational",
         "pmids": [
           "41504909",
-          "37403458",
-          "38950110",
-          "36216435"
+          "30586750"
         ],
         "style": "plain",
         "provenance": "ir"
       },
       {
-        "id": "gap_earlier_reassessme__out_blood_pressure",
-        "source": "gap_earlier_reassessme",
-        "target": "out_blood_pressure",
-        "label": "The evidence emphasizes that individualized antihypertensive response varies substantially and that prolonged exposure to elevated LDL increases cumulative atherosclerotic burden o",
+        "id": "gap_assessment_of_addi__out_ldl_cholesterol",
+        "source": "gap_assessment_of_addi",
+        "target": "out_ldl_cholesterol",
+        "label": "The literature provided states that apoB measurement may outperform LDL-C alone for predicting atherosclerotic cardiovascular disease risk and discusses its clinical use when LDL-C",
         "role": "causal",
         "status": "omitted",
         "path_type": "upstream",
         "evidence": "observational",
         "pmids": [
-          "37039792",
-          "38969749",
-          "39126771"
+          "38950110"
         ],
         "style": "plain",
         "provenance": "ir"
@@ -840,7 +869,7 @@
     "title": "CausalGraph",
     "type": "object"
   },
-  "mermaid": "flowchart TD\n  out_blood_pressure[\"blood pressure\nwhat the plan targets\"]\n  out_ldl_cholesterol[\"LDL cholesterol\nwhat the plan targets\"]\n  gap_any_plan_to_check[\"Any plan to check for lisinopril-induced cough and switch to an ARB if cough limits adherence\nthe literature says this matters here\"]\n  gap_followup_ldl_meas[\"Follow-up LDL measurement and treatment intensification if LDL reduction is inadequate (for example adding ezetimibe or other nonstatin therapy)\nthe literature says this matters here\"]\n  gap_measurement_of_add[\"Measurement of additional lipid risk markers such as lipoprotein(a), non-HDL cholesterol, triglycerides, or apolipoprotein B\nthe literature says this matters here\"]\n  gap_earlier_reassessme[\"Earlier reassessment than six months to evaluate whether blood pressure and LDL are responding adequately to therapy\nthe literature says this matters here\"]\n  do_lisinopril{{\"Lisinopril 20 mg daily\"}}\n  do_atorvastatin{{\"Atorvastatin 40 mg\"}}\n  do_lisinopril ==> out_blood_pressure\n  do_atorvastatin ==> out_ldl_cholesterol\n  gap_any_plan_to_check --> out_blood_pressure\n  gap_followup_ldl_meas --> out_ldl_cholesterol\n  gap_measurement_of_add --> out_ldl_cholesterol\n  gap_earlier_reassessme --> out_blood_pressure\n  classDef outcome fill:#f1f5f9,color:#0f172a,stroke:#94a3b8;\n  classDef act fill:#dbeafe,color:#1e3a8a,stroke:#2563eb;\n  classDef flag fill:#fee2e2,color:#991b1b,stroke:#dc2626,stroke-width:2px;\n  class out_blood_pressure,out_ldl_cholesterol outcome;\n  class do_lisinopril,do_atorvastatin act;\n  class gap_any_plan_to_check,gap_followup_ldl_meas,gap_measurement_of_add,gap_earlier_reassessme flag;\n",
+  "mermaid": "flowchart TD\n  out_ldl_cholesterol[\"LDL cholesterol<br/>what the plan targets\"]\n  out_platelet_aggregati[\"platelet aggregation<br/>what the plan targets\"]\n  gap_a_specific_ldlc_t[\"A specific LDL-C treatment target (such as <70 mg/dL or <55 mg/dL) and a plan to intensify therapy if that target is not reached<br/>the literature says this matters here\"]\n  gap_consideration_of_a[\"Consideration of additional nonstatin LDL-lowering therapy such as ezetimibe or combination therapy if evolocumab alone does not achieve adequate LDL-C reduction after statin intolerance<br/>the literature says this matters here\"]\n  gap_assessment_of_lipo[\"Assessment of lipoprotein(a) as a contributor to residual cardiovascular risk<br/>the literature says this matters here\"]\n  gap_assessment_of_addi[\"Assessment of additional lipid risk markers such as apolipoprotein B (apoB)<br/>the literature says this matters here\"]\n  do_atorvastatin{{\"Atorvastatin 80 mg daily\"}}\n  do_evolocumab{{\"Evolocumab 140 mg subcutaneous every two weeks\"}}\n  do_aspirin{{\"Aspirin 81 mg daily\"}}\n  do_atorvastatin ==> out_ldl_cholesterol\n  do_evolocumab ==> out_ldl_cholesterol\n  do_aspirin ==> out_platelet_aggregati\n  gap_a_specific_ldlc_t --> out_ldl_cholesterol\n  gap_consideration_of_a --> out_ldl_cholesterol\n  gap_assessment_of_lipo --> out_ldl_cholesterol\n  gap_assessment_of_addi --> out_ldl_cholesterol\n  classDef outcome fill:#f1f5f9,color:#0f172a,stroke:#94a3b8;\n  classDef act fill:#dbeafe,color:#1e3a8a,stroke:#2563eb;\n  classDef flag fill:#fee2e2,color:#991b1b,stroke:#dc2626,stroke-width:2px;\n  class out_ldl_cholesterol,out_platelet_aggregati outcome;\n  class do_atorvastatin,do_evolocumab,do_aspirin act;\n  class gap_a_specific_ldlc_t,gap_consideration_of_a,gap_assessment_of_lipo,gap_assessment_of_addi flag;\n",
   "how_to_read_this": [
     "This is an evidence AUDIT of a plan, not medical advice and not a diagnosis.",
     "`evidence: hypothesis` means NO citation was found. Never restate it as established.",
