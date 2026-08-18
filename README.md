@@ -10,7 +10,7 @@ side-effects nobody named. Every finding carries PubMed IDs.
 git clone <this repo> && cd api-client
 
 export NOBSMED_API_URL="https://..."      # the URL you were given
-export NOBSMED_API_KEY="sk_nobs_..."      # the key you were given
+export NOBSMED_API_KEY="PUT-YOUR-KEY-HERE"      # the key you were given
 
 uv run audit.py                            # audits sample_input.txt
 uv run audit.py my_plan.txt                # audits your own file
@@ -129,7 +129,7 @@ A bearer token — an API key you were issued. It travels in a header, never a U
 written to server logs and browser history.
 
 ```
-Authorization: Bearer sk_nobs_...
+Authorization: Bearer PUT-YOUR-KEY-HERE
 ```
 
 One key per customer, so revoking one never affects another. Tell us if it leaks and we will issue a
